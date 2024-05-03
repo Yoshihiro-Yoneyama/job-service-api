@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  user_id        String   @id @default(uuid())
   name      String
   email     String   @unique
   password  String
@@ -24,11 +24,11 @@ model User {
 }
 
 model Task {
-  taskId String @id @default(uuid())
-  userId String
+  task_id String @id @default(uuid())
+  user_id String
   title String
   description String?
   createdAt DateTime
   updatedAt DateTime
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
 }
